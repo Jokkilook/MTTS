@@ -60,7 +60,7 @@ void printProductQueue(ProductQueue* q)
 
 	while (curr != NULL) {
 		const char* p = curr->data->name;
-		printf("%s", p);
+		printf("%s > ", p);
 		curr = curr->link;
 	}
 }
@@ -119,11 +119,20 @@ void printOrderQueue(OrderQueue* q)
 	}
 
 	OrderNode* curr = q->front;
-	int index = 1;
 
 	while (curr != NULL) {
-		int p = curr->data->id;
-		printf("%d", p);
+		int id = curr->data->id;
+		const char* name = curr->data->product->name;
+		printf("[ %08d ] | %s\n", id, name);
 		curr = curr->link;
 	}
+}
+
+const char* getRandomName()
+{	
+
+	int index = rand() % 10;
+
+
+	return nameList[index];
 }

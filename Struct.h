@@ -1,8 +1,12 @@
 ﻿#pragma once
+#define HAVE_STRUCT_TIMESPEC
+
 #include <pthread.h>
 
 #define TRUE 1
 #define FALSE 0
+
+static const char* nameList[10] = {"멧돼지 고기", "개구리 뒷다리", "고라니 어금니", "꿀벌꿀", "양털", "대나무 이쑤시개", "노루궁뎅이", "벌레먹은 사과", "지네 우유", "나무껍질"};
 
 typedef struct Product {
 	const char* name;
@@ -67,3 +71,5 @@ Order* dequeueOrder(OrderQueue* q);
 
 //주문 큐 출력 함수
 void printOrderQueue(OrderQueue* q);
+
+const char* getRandomName();
