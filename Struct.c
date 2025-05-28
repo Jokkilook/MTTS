@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "Struct.h"
 
 void initProductQueue(ProductQueue* q)
@@ -51,7 +52,7 @@ Product* dequeueProduct(ProductQueue* q)
 void printProductQueue(ProductQueue* q)
 {
 	if (isEmptyProductQueue(q)) {
-		printf("");
+		printf("빈 매물 큐\n");
 		return;
 	}
 
@@ -114,7 +115,7 @@ Order* dequeueOrder(OrderQueue* q)
 void printOrderQueue(OrderQueue* q)
 {
 	if (isEmptyOrderQueue(q)) {
-		printf("");
+		printf("빈 주문 큐\n");
 		return;
 	}
 
@@ -129,10 +130,13 @@ void printOrderQueue(OrderQueue* q)
 }
 
 const char* getRandomName()
-{	
+{
+	unsigned int randVal;
+	if (rand_s(&randVal) != 0) {
+		return "ERROR";
+	}
 
-	int index = rand() % 10;
-
+	int index = randVal % 10;
 
 	return nameList[index];
 }
